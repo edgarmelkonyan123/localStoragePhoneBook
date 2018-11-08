@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonebook</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js"></script>
+    <script src="https://unpkg.com/vue-ls@2.3.3/dist/vue-ls.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="entry.fullName" placeholder="Full Name">
+    <input type="text" v-model="entry.telephone" placeholder="+37491111111">
+    <button type="submit" @click="addEntry">Submit</button>
+
+    <ul>
+        <li v-for="(entry, index) in phonebook">
+            <div v-if="entry.edit">
+                <input type="text" v-model="entry.fullName">
+                <input type="text" v-model="entry.telephone">
+            </div>
+            <span v-else>{{entry.fullName}} {{entry.telephone}} </span>
+            <button @click="removeEntry(index)">&#10006;</button>
+            <button @click="editEntry(index)">&#9998;</button>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
